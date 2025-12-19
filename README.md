@@ -1,4 +1,4 @@
-# Void OS v1.0.0
+# Void OS v0.1.0
 
 A minimal, standalone operating system written in pure Rust with **zero external dependencies**. Built from scratch as a learning project and foundation for a WebAssembly unikernel.
 
@@ -320,6 +320,6 @@ This is the **public documentation and release repository** for Void OS. It cont
 ---
 
 **Status**: ✅ **Phase 1 100% COMPLETE** (All 8 Phases Done!) | 🚀 **Ready for Phase 2**  
-**Version**: 1.0.0  
+**Version**: 0.1.0  
 **Last Updated**: Desember 2025  
 **Total Development Time**: ~19-27 days (4-5.5 weeks)
