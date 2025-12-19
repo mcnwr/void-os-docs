@@ -32,13 +32,14 @@ See [PLAN2.md](PLAN2.md) for the roadmap to transform Void OS into a WebAssembly
 ### Prerequisites
 
 - **QEMU**: Virtual machine emulator
+
   ```bash
   # macOS
   brew install qemu
-  
+
   # Linux (Debian/Ubuntu)
   sudo apt-get install qemu-system-x86
-  
+
   # Linux (Arch)
   sudo pacman -S qemu
   ```
@@ -46,12 +47,14 @@ See [PLAN2.md](PLAN2.md) for the roadmap to transform Void OS into a WebAssembly
 ### Running Void OS
 
 1. **Using the provided script** (recommended):
+
    ```bash
    chmod +x run.sh
    ./run.sh
    ```
 
 2. **Or manually with QEMU**:
+
    ```bash
    qemu-system-x86_64 -cdrom releases/os_manual.iso -serial stdio -m 512M
    ```
@@ -82,6 +85,11 @@ Once the OS boots, you can use these commands:
 void-os-docs/
 ├── releases/
 │   └── os_manual.iso      # Pre-compiled bootable ISO
+├── screenshots/            # Screenshots and demo images
+│   ├── README.md           # Screenshots documentation
+│   ├── vos1.png            # Boot screen with memory tests
+│   ├── vos2.png            # Shell help command output
+│   └── vos3.png            # Memory information display
 ├── run.sh                  # Script to run OS in QEMU
 ├── README.md               # This file
 ├── USER_MANUAL.md          # Complete user guide
@@ -120,12 +128,14 @@ void-os-docs/
 ### VGA Implementation
 
 **Text Mode:**
+
 - **Buffer**: `0xB8000`
 - **Resolution**: 80x25 characters
 - **Format**: `[char][color]` (16-bit entries)
 - **Features**: Scrolling, cursor management, color support, tab/newline handling
 
 **Graphics Mode:**
+
 - **Buffer**: `0xA0000`
 - **Resolution**: 320x200 pixels
 - **Colors**: 256-color palette (Mode 13h)
@@ -158,7 +168,27 @@ void-os-docs/
 - **Features**: Date/time reading, `time` command
 - **Display**: Current date and time from hardware RTC
 
-## 🎨 Boot Screen
+## 🎨 Screenshots
+
+### Boot Screen & Memory Tests
+
+![VoidOS Boot Screen](screenshots/vos1.png)
+
+_VoidOS successfully booting with memory allocator tests and initial shell prompt_
+
+### Interactive Shell - Help Command
+
+![VoidOS Shell - Help Command](screenshots/vos2.png)
+
+_Interactive shell showing available commands with help output_
+
+### Memory Information
+
+![VoidOS Memory Info](screenshots/vos3.png)
+
+_Memory layout and heap usage information displayed using `meminfo` command_
+
+### Boot Screen (Text)
 
 ```
 ====================================
@@ -194,25 +224,29 @@ VoidOS> _
 ### Common Issues
 
 1. **QEMU Not Found**: Install QEMU
+
    ```bash
    # macOS
    brew install qemu
-   
+
    # Linux
    sudo apt-get install qemu-system-x86
    ```
 
 2. **ISO File Not Found**: Make sure `releases/os_manual.iso` exists
+
    ```bash
    ls -lh releases/os_manual.iso
    ```
 
 3. **Permission Denied**: Make run script executable
+
    ```bash
    chmod +x run.sh
    ```
 
-4. **Keyboard Input Not Working**: 
+4. **Keyboard Input Not Working**:
+
    - Make sure QEMU window has focus
    - Try clicking inside the QEMU window
    - On UTM: Check USB/Input settings in VM configuration
